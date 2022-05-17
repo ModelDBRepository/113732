@@ -85,7 +85,7 @@ VERBATIM {
     /* that we don't go backwards in time (different delays) */
     /* should have been cleared if we are to write here */
     if (qp[nspk].time != 1e20) { //  -- REMOVED THIS ERROR!!
-      printf("WARNING: QUEUE ANOMALY: %x %g %g ",qpr->qq,*(qpr->nspk),*(qpr->qln));
+      printf("WARNING: QUEUE ANOMALY: %p %g %g ",qpr->qq,*(qpr->nspk),*(qpr->qln));
       // hoc_execerror("Error: queue full.\n",0);
     }
     if (qpr->qterm < time) {	/* queu marching forward in time: AOK */
@@ -123,7 +123,7 @@ VERBATIM {
       /* move the tail forward and reset if reached the end */
       (*(qpr->nspk))++;
       if ((*(qpr->nspk)) == *(qpr->qln)) { (*(qpr->nspk)) = 0.; 
-        printf("Cycling around for %x\n",qpr->qq);}
+        printf("Cycling around for %p\n",qpr->qq);}
 
   }
   }
@@ -160,7 +160,7 @@ FUNCTION check() {
 	_lcheck++;  /* count the active pointers */
 	if ((&(PRECAST->plst[ii])) != (PRECAST->plst[ii]->back)) {
 	  printf("****************************************************************\n");
-	  printf("ERROR:: %2d: Index:%3d,C%09d,Pr%09d,Po%09d, Delay:%6g (%x->%x->%x)\n",
+	  printf("ERROR:: %2d: Index:%3d,C%09d,Pr%09d,Po%09d, Delay:%6g (%p->%p->%p)\n",
 		 ii,
 		 PRECAST->plst[(int)ii]->index,
 		 PRECAST->plst[(int)ii]->ucode,
@@ -256,7 +256,7 @@ FUNCTION post() {
 		 PRECAST->cpre,
 		 PRECAST->plst[ii]->qpt->cpost);
 	  if (xx == -1 || (&(PRECAST->plst[ii])) != (PRECAST->plst[ii]->back)) {
-	    printf("\t\t%s: %x -> %x\n",
+	    printf("\t\t%s: %p -> %p\n",
 		   (((&(PRECAST->plst[ii]))==(PRECAST->plst[ii]->back))?
 		    "OK":"POINTER MISMATCH"),
 		   &(PRECAST->plst[ii]),
@@ -277,7 +277,7 @@ PROCEDURE prq(x) {
     QptR *qpr;
     psyn = PRECAST->plst[(int)_lx];
     qpr = psyn->qpt;  
-    printf("%x %g %g\n",qpr->qq,*(qpr->nspk),*(qpr->qln));
+    printf("%p %g %g\n",qpr->qq,*(qpr->nspk),*(qpr->qln));
     for (ii=0;ii<*(qpr->qln);ii++) {
       printf("%8g%8d\n",
 	     ((qpr->qq)[ii]).time,

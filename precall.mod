@@ -41,7 +41,10 @@ PROCEDURE pp() {
       spk_internal = 1
       spk = 1
       VERBATIM
-      { extern double hoc_call_func();
+      {
+      #ifndef NRN_VERSION_GTEQ_8_2_0
+      extern double hoc_call_func();
+      #endif
       char func[8] = "precall";
       Symbol* s = hoc_lookup(func);
       if (s && num>=0) {

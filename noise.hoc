@@ -5,6 +5,7 @@ proc init() {
 pp=new IClamp(0.5)
 pp.dur=5000
 r=new Random($1)
+r.Random123()
 }
 proc setmean() {
 r.poisson($1)
@@ -43,6 +44,7 @@ proc init() {
 pp=new IClamp(0.5)
 pp.dur=5000
 r=new Random($1)
+r.Random123()
 }
 proc setmean() {
 r.normal($1,$2)
@@ -82,6 +84,7 @@ proc init() {
 pp=new IClamp(0.5)
 pp.dur=5000
 r=new Random($1)
+r.Random123()
 }
 proc setmean() {
 r.uniform($1,$2)

@@ -66,6 +66,4 @@ Template for the dipole in a single cell
 
 20220517 Updated MOD files to contain valid C++ and be compatible with the upcoming versions 8.2 and 9.0 of NEURON.
 
----
-
-2025-06-02: Standardized to Markdown.
+20250602 Converted README to Markdown.
